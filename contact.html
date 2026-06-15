@@ -8,6 +8,8 @@
 </head>
 <body>
     <nav>
+    <img src="assets/download png.webp" alt="AAS Logo" height="50">
+
     <a href="index.html">Home</a>
     <a href="shop.html">shop</a>
     <a href="contact.html">Contact</a>
@@ -20,5 +22,14 @@
         or email us at:<br>
         A.affordaleshoz@gmail.com<br>
     </p>
+    <audio id="bgMusic" loop>
+    <source src="audio/Outkast - Ms. Jackson (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    document.addEventListener('click', function() {
+        document.getElementById('bgMusic').play();
+    }, { once: true });
+</script>
 </body>
 </html>
