@@ -3,33 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact - A.A.S</title>
     <link rel="stylesheet" href="styler.css">
 </head>
 <body>
-    <nav>
+
+<nav>
     <img src="assets/download png.webp" alt="AAS Logo" height="50">
-
     <a href="index.html">Home</a>
-    <a href="shop.html">shop</a>
+    <a href="shop.html">Shop</a>
+    <a href="artists.html">Artists</a>
     <a href="contact.html">Contact</a>
-  
-</nav> 
-    <h1 style="text-align: center;"> Thank you for coming to our site!</h1>
-    <H1 style="text-align: center"> You can contact us at </H1>
-    <p style="text-align: center"> 
-        0737751528<br>
-        or email us at:<br>
-        A.affordaleshoz@gmail.com<br>
-    </p>
-    <audio id="bgMusic" loop>
-    <source src="audio/Outkast - Ms. Jackson (Lyrics).mp3" type="audio/mpeg">
-</audio>
+</nav>
 
+<div class="contact-hero">
+    <h1>Get In Touch</h1>
+    <p>We'd love to hear from you</p>
+</div>
+
+<div class="contact-cards">
+
+    <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Call Us</h3>
+        <p>0737751528</p>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h3>Email Us</h3>
+        <p>A.affordaleshoz@gmail.com</p>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🎨</div>
+        <h3>Commission Art</h3>
+        <p>Reach out to discuss your custom piece with any of our artists</p>
+    </div>
+
+</div>
+
+<p class="contact-note">Thank you for visiting A.A.S — where art finds its home.</p>
+
+<audio id="bgMusic" loop>
+    <source src="audio/Gibran Alcocer - Idea 22gi.wav" type="audio/mpeg">
+</audio>
 <script>
     document.addEventListener('click', function() {
         document.getElementById('bgMusic').play();
     }, { once: true });
 </script>
+
 </body>
 </html>

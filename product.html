@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork - A.A.S</title>
+    <link rel="stylesheet" href="styler.css">
+</head>
+<body>
+
+<nav>
+    <img src="assets/download png.webp" alt="AAS Logo" height="50">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="artists.html">Artists</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="product-page">
+    <img id="artwork" src="" alt="artwork">
+    <div class="product-info">
+        <h2>Original Artwork</h2>
+        <p id="price" class="product-price"></p>
+        <div class="product-detail">
+            <p>✅ Original piece available for purchase</p>
+            <p>✅ Commission a similar piece</p>
+            <p>✅ Direct contact with the artist</p>
+        </div>
+        <p>To purchase or commission this piece contact us at:</p>
+        <div class="contact-details">
+            <p>📧 A.affordaleshoz@gmail.com</p>
+            <p>📞 0737751528</p>
+        </div>
+        <a href="shop.html" class="back-btn">← Back to Shop</a>
+    </div>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const img = params.get('img');
+    document.getElementById('artwork').src = 'images/' + img + '.jpg';
+    const price = Math.floor(Math.random() * (1200 - 350 + 1)) + 350;
+    document.getElementById('price').textContent = 'KSh ' + price;
+</script>
+
+<audio id="bgMusic" loop>
+    <source src="audio/Gibran Alcocer - Idea 22gi.wav" type="audio/mpeg">
+</audio>
+<script>
+    document.addEventListener('click', function() {
+        document.getElementById('bgMusic').play();
+    }, { once: true });
+</script>
+
+</body>
+</html>

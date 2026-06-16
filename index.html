@@ -3,117 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> welcome to A.A.S</title>
-    <style>
-        nav-link{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-    </style>
-
-        <link rel="stylesheet" href="styler.css">
-
-
+    <title>Welcome to A.A.S</title>
+    <link rel="stylesheet" href="styler.css">
 </head>
 <body>
-     
- <nav>
+
+<nav>
     <img src="assets/download png.webp" alt="AAS Logo" height="50">
-
     <a href="index.html">Home</a>
-    <a href="shop.html">shop</a>
+    <a href="shop.html">Shop</a>
+    <a href="artists.html">Artists</a>
     <a href="contact.html">Contact</a>
-  
-</nav> 
-  
-    <h1 style="text-align: center;">welcome to A.A.S</h1>
-    <h2 style="text-align: center;">we serve as a bridge between atists and art lovers</h2>
-    <hr>
-    <P style="text-align: center;">welcome to the site we fasilitate up and coming artists in the digital space and traditional space<br>
-        digital artists can be commissioned <br> 
-        traditional artists as well as sculptors are counted and are communicated with directly <br> 
-        for artlovers and enthusiests <br> 
-    </P>
+</nav>
 
-     
-</header>
-
-
-   <table border="1">
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>City</th>
-    </tr>
-    <tr>
-        <td>John</td>
-        <td>25</td>
-        <td>Nairobi</td>
-    </tr>
-    <tr>
-        <td>Mary</td>
-        <td>22</td>
-        <td>Lagos</td>
-    </tr>
-</table>
+<!-- Hero Section -->
+<div class="hero">
+    <h1 >Welcome to A.A.S</h1>
+    <p>A bridge between artists and art lovers</p>
+    <a href="shop.html" class="hero-btn">Browse the Shop</a>
 </div>
 
-    <style>
-        image-container{
-            display:flex;
-            gap: 500px;
-            justify-content: center;
-        }
-    </style>
-    <div div class="image-container" style="text-align: center;">
-        <img src="images/5th.jpg" alt="my 5th ani" width="150" height="200">
-
-        
-        <img src="images/cover.jpg" alt="book cover" width="150" height="200">
+<!-- About Section -->
+<div class="about-section">
+    <div class="about-card">
+        <h2>🎨 Digital Artists</h2>
+        <p>Commission digital artists directly for custom pieces tailored to your vision.</p>
     </div>
+    <div class="about-card">
+        <h2>🗿 Sculptors</h2>
+        <p>Connect directly with traditional sculptors and bring physical art into your space.</p>
+    </div>
+    <div class="about-card">
+        <h2>🖼️ Traditional Art</h2>
+        <p>Discover up and coming traditional artists from across Africa.</p>
+    </div>
+    <div class="about-card">
+        <h2>👗 Fashion Art</h2>
+        <p>Explore wearable art and Ankara designs from talented fashion artists.</p>
+    </div>
+</div>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/OGTgknculEg?si=BfVzO8wDluuzGPTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- Videos Section -->
+<h2 class="page-title">Learn More About Us</h2>
+<p class="page-subtitle">Watch these videos to see what A.A.S is all about</p>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qpV7uSJYrqc?si=gzFxG11TDrwd8yaQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- 
-    <ol>
-    <li>sculptur</li> 
-    <li>digital</li>
-    <li>traditional</li>
-    <li>fashion</li>
-    </ol>
-    <ul>
-    <li>home</li> 
-    <li>search</li>
-    <li>units</li>
-    <li>peaces</li>
-    </ul>
-    <ul>
-        <li>sculptors
-        <ul>
-            lugwick nockale
-            jon kwick
-            mcnik jenkens
-        </ul>
-        </li>
-        <li>digitals
-            <Ul>
-                <li>fureger_tenx</li>
-                <LI>meet_fers</LI>
-                <li>pigs-laters</li>
-            </Ul>
-        </li>
-    </ul>
-   <audio id="bgMusic" loop>
-    <source src="audio/Outkast - Ms. Jackson (Lyrics).mp3" type="audio/mpeg">
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/OGTgknculEg?si=BfVzO8wDluuzGPTU" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qpV7uSJYrqc?si=gzFxG11TDrwd8yaQ" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YDQsBXSoCYk?si=n4vfVOv7c7CQxijb" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/yN4O4Dj6nbw?si=emGzw9EYu4qCfeEc" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="audio/Gibran Alcocer - Idea 22gi.wav" type="audio/wav">
 </audio>
-
 <script>
     document.addEventListener('click', function() {
         document.getElementById('bgMusic').play();
     }, { once: true });
 </script>
+
 </body>
 </html>
