@@ -9,7 +9,6 @@
 <body>
 
 <nav>
-    <img src="assets/download png.webp" alt="AAS Logo" height="50">
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
     <a href="artists.html">Artists</a>
@@ -58,9 +57,18 @@
     <source src="audio/Gibran Alcocer - Idea 22gi.wav" type="audio/wav">
 </audio>
 <script>
+    const music = document.getElementById('bgMusic');
+    let playing = false;
+
     document.addEventListener('click', function() {
-        document.getElementById('bgMusic').play();
-    }, { once: true });
+        if (!playing) {
+            music.play();
+            playing = true;
+        } else {
+            music.pause();
+            playing = false;
+        }
+    });
 </script>
 
 </body>
