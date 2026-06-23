@@ -28,6 +28,45 @@ window.onload = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
+     const form = document.querySelector('form');
+    
+    if (!form) {
+        console.error('No form found on page');
+        return;
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop actual submission for testing
+        
+        const inputs = form.querySelectorAll('input, textarea, select');
+        let allValid = true;
+
+        inputs.forEach(input => {
+            // Check if input has a label
+            const label = document.querySelector(`label[for="${input.id}"]`);
+            
+            if (!label) {
+                console.warn(`⚠️ Input "${input.name || input.id}" has no label`);
+                allValid = false;
+            }
+
+            // Check if field is empty (if required)
+            if (input.hasAttribute('required') && !input.value.trim()) {
+                console.warn(`⚠️ "${input.name || input.id}" is required but empty`);
+                input.style.borderColor = 'red';
+                allValid = false;
+            } else {
+                input.style.borderColor = ''; // Reset
+            }
+        });
+
+        if (allValid) {
+            console.log('✅ All fields are valid!');
+            // form.submit(); // Uncomment to actually submit
+        } else {
+            console.log('❌ Fix the errors above');
+        }
+    });
     const form = document.getElementById('registerForm');
 
     if (form) {
