@@ -28,7 +28,53 @@ window.onload = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-     const form = document.querySelector('form');
+    // ===== ADDED: Form validation functions =====
+    function showError(input, message) {
+        // Remove any existing error for this input
+        removeError(input);
+        
+        const error = document.createElement('div');
+        error.className = 'error-message';
+        error.style.color = 'red';
+        error.style.fontSize = '14px';
+        error.style.marginTop = '4px';
+        error.style.marginBottom = '8px';
+        error.textContent = message;
+        
+        input.style.borderColor = 'red';
+        input.style.borderWidth = '2px';
+        
+        input.parentNode.insertBefore(error, input.nextSibling);
+    }
+
+    function removeError(input) {
+        const error = input.parentNode.querySelector('.error-message');
+        if (error) error.remove();
+        input.style.borderColor = '';
+        input.style.borderWidth = '';
+    }
+
+    function getErrorMessage(input) {
+        const name = input.getAttribute('data-label') || 
+                     input.placeholder || 
+                     input.name || 
+                     input.id || 
+                     'This field';
+        
+        // Custom messages based on field name/id
+        if (name.toLowerCase().includes('name') || input.id === 'fullname' || input.id === 'username') {
+            return 'Please write their name';
+        }
+        if (name.toLowerCase().includes('email')) return 'Please enter an email address';
+        if (name.toLowerCase().includes('phone')) return 'Please enter a phone number';
+        if (name.toLowerCase().includes('message')) return 'Please write a message';
+        if (name.toLowerCase().includes('password')) return 'Please enter a password';
+        
+        return `Please fill out the ${name} field`;
+    }
+    // ===== END ADDED =====
+
+    const form = document.querySelector('form');
     
     if (!form) {
         console.error('No form found on page');
@@ -50,39 +96,74 @@ document.addEventListener('DOMContentLoaded', function() {
                 allValid = false;
             }
 
+            // ===== CHANGED: Show error message instead of just border =====
             // Check if field is empty (if required)
             if (input.hasAttribute('required') && !input.value.trim()) {
                 console.warn(`⚠️ "${input.name || input.id}" is required but empty`);
-                input.style.borderColor = 'red';
+                showError(input, getErrorMessage(input));
                 allValid = false;
             } else {
-                input.style.borderColor = ''; // Reset
+                removeError(input);
             }
+            // ===== END CHANGED =====
         });
 
         if (allValid) {
             console.log('✅ All fields are valid!');
+            // ===== ADDED: Auto-submit if using localStorage =====
+            // Check if this is the registration form
+            if (form.id === 'registerForm') {
+                localStorage.setItem('registered', 'true');
+                window.location.href = 'index.html';
+            }
             // form.submit(); // Uncomment to actually submit
         } else {
             console.log('❌ Fix the errors above');
         }
     });
-    const form = document.getElementById('registerForm');
 
-    if (form) {
+    // ===== ADDED: Clear errors on typing =====
+    document.querySelectorAll('input, textarea, select').forEach(input => {
+        input.addEventListener('input', function() {
+            if (this.value.trim()) {
+                removeError(this);
+            }
+        });
+    });
+    // ===== END ADDED =====
+
+    // ===== ADDED: Check for duplicate form variable =====
+    // Your existing registerForm code - removed duplicate const form declaration
+    const registerForm = document.getElementById('registerForm');
+
+    if (registerForm) {
         if (localStorage.getItem('registered') === 'true') {
-            form.style.display = 'none';
+            registerForm.style.display = 'none';
             const doneMessage = document.createElement('p');
             doneMessage.textContent = 'Done! You are already registered.';
             doneMessage.className = 'success-message';
             doneMessage.style.display = 'block';
-            form.parentElement.appendChild(doneMessage);
+            registerForm.parentElement.appendChild(doneMessage);
         } else {
-            form.addEventListener('submit', function(event) {
+            // Remove any existing submit listeners to avoid conflicts
+            registerForm.removeEventListener('submit', function() {});
+            registerForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                localStorage.setItem('registered', 'true');
-                window.location.href = 'index.html';
+                // Check if all fields are valid before saving
+                const inputs = registerForm.querySelectorAll('input[required], textarea[required], select[required]');
+                let allValid = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        showError(input, getErrorMessage(input));
+                        allValid = false;
+                    }
+                });
+                if (allValid) {
+                    localStorage.setItem('registered', 'true');
+                    window.location.href = 'index.html';
+                }
             });
         }
     }
+    // ===== END ADDED =====
 });
