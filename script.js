@@ -86,3 +86,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const inputs = form.querySelectorAll('input, select');
+    let hasEmpty = false;
+
+    inputs.forEach(function(input) {
+        if (input.value.trim() === '') {
+            input.style.border = '2px solid red';
+            hasEmpty = true;
+        } else {
+            input.style.border = '';
+        }
+    });
+
+    if (hasEmpty) {
+        let warning = document.getElementById('warningText');
+        if (!warning) {
+            warning = document.createElement('p');
+            warning.id = 'warningText';
+            warning.style.color = 'red';
+            warning.textContent = "Don't leave blanks!";
+            form.appendChild(warning);
+        }
+        return;
+    }
+
+    localStorage.setItem('registered', 'true');
+    window.location.href = 'index.html';
+});
