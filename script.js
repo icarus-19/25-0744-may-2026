@@ -32,13 +32,30 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('successMessage');
+            localStorage.setItem('registered', 'true');
 
-            message.textContent = 'Thank you, ' + name + '! You have successfully registered.';
-            message.style.display = 'block';
-
-            form.reset();
+            window.location.href = 'index.html';
         });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registerForm');
+    
+    if (form) {
+        if (localStorage.getItem('registered') === 'true') {
+            form.style.display = 'none';
+            const doneMessage = document.createElement('p');
+            doneMessage.textContent = 'Done! You are already registered.';
+            doneMessage.className = 'success-message';
+            doneMessage.style.display = 'block';
+            form.parentElement.appendChild(doneMessage);
+        } else {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                localStorage.setItem('registered', 'true');
+                window.location.href = 'index.html';
+            });
+        }
     }
 });
