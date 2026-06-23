@@ -26,22 +26,10 @@ window.onload = function() {
 
     overlay.style.display = 'flex';
 };
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('registerForm');
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            localStorage.setItem('registered', 'true');
-
-            window.location.href = 'index.html';
-        });
-    }
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registerForm');
-    
+
     if (form) {
         if (localStorage.getItem('registered') === 'true') {
             form.style.display = 'none';
