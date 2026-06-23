@@ -90,27 +90,34 @@ document.addEventListener('DOMContentLoaded', function() {
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const inputs = form.querySelectorAll('input, select');
+    const fields = [
+        { input: document.getElementById('name'), message: "Please don't leave this blank — enter your full name." },
+        { input: document.getElementById('email'), message: "Please don't leave this blank — enter your email address." },
+        { input: document.getElementById('phone'), message: "Please don't leave this blank — enter your phone number." },
+        { input: document.getElementById('gender'), message: "Please don't leave this blank — select a gender option." }
+    ];
+
     let hasEmpty = false;
 
-    inputs.forEach(function(input) {
-        if (input.value.trim() === '') {
-            input.style.border = '2px solid red';
+    fields.forEach(function(field) {
+        const existingError = field.input.nextElementSibling;
+        if (existingError && existingError.classList.contains('field-error')) {
+            existingError.remove();
+        }
+
+        if (field.input.value.trim() === '') {
+            field.input.style.border = '2px solid red';
+            const errorText = document.createElement('p');
+            errorText.className = 'field-error';
+            errorText.textContent = field.message;
+            field.input.insertAdjacentElement('afterend', errorText);
             hasEmpty = true;
         } else {
-            input.style.border = '';
+            field.input.style.border = '';
         }
     });
 
     if (hasEmpty) {
-        let warning = document.getElementById('warningText');
-        if (!warning) {
-            warning = document.createElement('p');
-            warning.id = 'warningText';
-            warning.style.color = 'red';
-            warning.textContent = "Don't leave blanks!";
-            form.appendChild(warning);
-        }
         return;
     }
 

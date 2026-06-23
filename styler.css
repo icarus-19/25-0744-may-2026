@@ -258,6 +258,13 @@
     background-color: #c8860a;
 }
 
+.field-error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
 nav {
     background-image: url('assets/downloadnnnn.JPG');
     background-size: auto 100%;
