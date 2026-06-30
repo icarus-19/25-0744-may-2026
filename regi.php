@@ -45,7 +45,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $supabaseUrl = 'https://ifmrzgdjcbupkubcthkk.supabase.co';
-        $supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmbXJ6Z2RqY2J1cGt1YmN0aGtrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3Njk1MTcsImV4cCI6MjA5ODM0NTUxN30.1uxa4uYbXiTfbVNF65XqgKyZFgRR_yFajBZsTzNRw4I';
+        $supabaseKey = 'sb_publishable_lQGIhQ1Ba2wzFufgML192A_NBdqXGec';
 
         $data = [
             'name'   => $_POST['name'],
