@@ -69,11 +69,16 @@
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
+        echo '<p>HTTP Code: ' . $httpCode . '</p>';
+echo '<p>Response: ' . htmlspecialchars($response) . '</p>';
+
         if ($httpCode == 201) {
             echo '<p class="success-message" style="display:block;">Thank you, ' . htmlspecialchars($data['name']) . '! You have successfully registered.</p>';
         } else {
             echo '<p class="success-message" style="display:block; background-color:red;">Something went wrong. Please try again.</p>';
+            
         }
+        
     }
     ?>
 </div>
