@@ -44,8 +44,8 @@
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $supabaseUrl = 'https://ifmrzgdjcbupkubcthkk.supabase.co';
-        $supabaseKey = 'sb_publishable_lQGIhQ1Ba2wzFufgML192A_NBdqXGec';
+        $supabaseUrl = 'https://yfnbjqxuddyyvtbhqilx.supabase.co';
+        $supabaseKey = 'sb_publishable_jH84J5GB4CFKieOv_8uzBw_nXw_ezvp';
 
         $data = [
             'name'   => $_POST['name'],
@@ -54,7 +54,7 @@
             'gender' => $_POST['gender'],
         ];
 
-        $ch = curl_init($supabaseUrl . '/rest/v1/registrations');
+        $ch = curl_init($supabaseUrl . '/rest/v1/restras');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
