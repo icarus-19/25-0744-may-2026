@@ -50,10 +50,10 @@ error_reporting(E_ALL);
         $supabaseKey = 'sb_publishable_jH84J5GB4CFKieOv_8uzBw_nXw_ezvp';
 
         $data = [
-            'name'   => $_POST['name'],
-            'email'  => $_POST['email'],
-            'phone'  => $_POST['phone'],
-            'gender' => $_POST['gender'],
+            'Name'   => $_POST['name'],
+            'Email'  => $_POST['email'],
+            'Phone'  => $_POST['phone'],
+            'Gender' => $_POST['gender'],
         ];
 
         $ch = curl_init($supabaseUrl . '/rest/v1/restras');
