@@ -1,5 +1,114 @@
 <?php
+// ... keep all your existing PHP functions here ...
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.A.S Watermark Tool</title>
+    <link rel="stylesheet" href="styler.css">
+    <style>
+        .watermark-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+        .watermark-box {
+            background-color: #ede4d3;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid #b5651d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .watermark-box h2 {
+            color: #3b2a1a;
+            margin-bottom: 15px;
+            font-family: Cambria;
+        }
+        .watermark-box p {
+            color: #5a4a3f;
+            line-height: 1.7;
+        }
+        .result-id {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #b5651d;
+        }
+        .hero-title {
+            text-align: center;
+            color: #3b2a1a;
+            font-family: Cambria;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .hero-sub {
+            text-align: center;
+            color: #7a5c3a;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #b5651d;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <img src="assets/download png.webp" alt="AAS Logo" height="50">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="artists.html">Artists</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="watermark-container">
+    <h1 class="hero-title">A.A.S Watermark Engine</h1>
+    <p class="hero-sub">Protecting creators. Tracing pirates.</p>
+
+    <div class="watermark-box">
+        <span class="tag">Original</span>
+        <h2>Original Text</h2>
+        <p><?php echo $originalText; ?></p>
+    </div>
+
+    <div class="watermark-box">
+        <span class="tag">Watermarked</span>
+        <h2>Watermarked Text</h2>
+        <p><?php echo $watermarked; ?></p>
+        <p style="font-size:0.85rem; color:#b5651d; margin-top:10px;">
+            ✅ Looks identical to the reader — watermark is invisible
+        </p>
+    </div>
+
+    <div class="watermark-box">
+        <span class="tag">Decoded — Digital</span>
+        <h2>User ID (Zero-Width Layer)</h2>
+        <p class="result-id"><?php echo decodeZeroWidth($watermarked); ?></p>
+        <p>Detected from invisible characters — works on digital copies</p>
+    </div>
+
+    <div class="watermark-box">
+        <span class="tag">Decoded — OCR Resistant</span>
+        <h2>User ID (Synonym Layer)</h2>
+        <p class="result-id"><?php echo decodeSynonyms($watermarked); ?></p>
+        <p>Detected from word choice patterns — survives print and scan attacks</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<?php
 // ============================================
 // LAYER 1: Zero-width character encoding
 // Encodes user ID in binary using invisible characters
